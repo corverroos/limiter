@@ -1,8 +1,8 @@
 # ratelimit
 
-Package `ratelimit` provides a simpler concurrent resource based rate limiter API and multiple implementations. It should be safe for concurrent usage. 
+Package `ratelimit` provides a simple "resource based" rate limit API and multiple implementations.
 
-The aim is to find a performant implementation to use as generic log rate limiter for Luno microservices. Performance is more important than correctness in this use case since we expect high level of concurrency and over (or under) limiting is not an issue.
+The aim is to find a performant implementation to use as generic logging rate limiter for Luno microservices. We want to limit specific logs from spamming the infrastructure, identified either by unique message or source. Performance is more important than correctness in this use case since we expect high level of concurrency and slight over (or under) limiting is not an issue.
 
 ```
 // RateLimiter is the interface implemented by a resource rate limiter.

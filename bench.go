@@ -7,7 +7,7 @@ import (
 )
 
 func Benchmark(b *testing.B, provider func() RateLimiter) {
-	// Run the bench mark for increasing number of concurrent goroutines.
+	// Run the benchmark for increasing number of concurrent goroutines.
 	for _, m := range []int{1, 4, 16, 64, 256, 1024, 4096, 16384} {
 		b.Run(fmt.Sprintf("Concurrency_%d", m), benchmark(provider, m))
 	}

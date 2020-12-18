@@ -3,7 +3,9 @@ package ratelimit
 import (
 	"fmt"
 	"sync"
+	"sync/atomic"
 	"testing"
+	"time"
 )
 
 func Benchmark(b *testing.B, provider func() RateLimiter) {
@@ -18,14 +20,18 @@ func benchmark(provider func() RateLimiter, m int) func(b *testing.B) {
 		limiter := provider()
 		var wg sync.WaitGroup
 		wg.Add(m)
+		var total int64
 		for i := 0; i < m; i++ {
 			go func(n int) {
+				t0 := time.Now()
 				for i := 0; i < n; i++ {
 					limiter.Request(fmt.Sprint(i))
 				}
+				atomic.AddInt64(&total, time.Since(t0).Nanoseconds())
 				wg.Done()
 			}(b.N)
 		}
 		wg.Wait()
+		b.ReportMetric(float64(atomic.LoadInt64(&total))/float64(m*b.N), "ns/op")
 	}
 }

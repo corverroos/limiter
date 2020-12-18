@@ -19,7 +19,7 @@ The package also provides performance benchmarking; number of operations per num
 
 |Implementation | 1 | 4 | 16 | 64 | 256 | 1024 | 4096 | 16384 |
 |---|--|--|--|--|--|--|--|--|
-|github.com/corver/ratelimit.NaiveWindow | 327 | 1_558 | 8_062 | 27_476 | 101_406 | 469_711 | 1_859_209 | 6_403_791 |
-|github.com/corver/ratelimit.SyncMapWindow | 611 | 2_060 | 13_346 | 50_025 | 193_808 | 799_810 | 2_149_220 | 5_444_247 |
+|github.com/corver/ratelimit.NaiveWindow | 341 | 1_581 | 6_520 | 25_084 | 108_735 | 389_116 | 1_410_022 | 4_813_929 |
+|github.com/corver/ratelimit.SyncMapWindow | 609 | 2_056 | 14_259 | 53_523 | 222_216 | 756_072 | 1_969_951 | 3_862_25 |
 
 Please DM me link to your implementation for me to add your benchmark score.

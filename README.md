@@ -1,3 +1,3 @@
-#Limiter
+#ratelimit
 
-Limiter provides a simpler concurrent resource based rate limiter API and multiple implementations. It also provides performance benchmarking.
+Package `ratelimit` provides a simpler concurrent resource based rate limiter API and multiple implementations. It also provides performance benchmarking.

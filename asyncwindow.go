@@ -15,6 +15,7 @@ func NewAsyncWindow(period time.Duration, limit int) *AsyncWindow {
 		limit:  limit,
 		ch:     make(chan string, 10000),
 	}
+	a.prev.Store(make(map[string]int))
 	go a.runForever()
 
 	return a
@@ -24,7 +25,7 @@ type AsyncWindow struct {
 	limit  int
 	period time.Duration
 
-	prev    map[string]int
+	prev    atomic.Value //  map[string]int
 	next    map[string]int
 	dropped int64
 	current time.Time
@@ -35,7 +36,7 @@ func (a *AsyncWindow) runForever() {
 	for resource := range a.ch {
 		bucket := time.Now().Truncate(a.period)
 		if a.current != bucket {
-			a.prev = a.next
+			a.prev.Store(a.next)
 			a.next = make(map[string]int)
 			a.current = bucket
 		}
@@ -50,5 +51,5 @@ func (a *AsyncWindow) Request(resource string) bool {
 		atomic.AddInt64(&a.dropped, 1)
 	}
 
-	return a.prev[resource] < a.limit
+	return a.prev.Load().(map[string]int)[resource] < a.limit
 }

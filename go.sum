@@ -1,5 +1,8 @@
+github.com/corverroos/ratelimit v0.0.0-20201219121544-b1d97f10ad1c/go.mod h1:bETyVEPwSZFUsNkEvLPqmWnqDczNLOLyJktf9hA0S/A=
 github.com/davecgh/go-spew v1.1.0 h1:ZDRjVQ15GmhC3fiQ8ni8+OwkZQO4DARzQgrnXU1Liz8=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
+github.com/ellemouton/ratelimiters v0.0.0-20201221190006-88f012abc67d h1:uI0Hs9zu1MKEDNQ7SABKpbkZ/w6IY345jRZcDgeQy8Y=
+github.com/ellemouton/ratelimiters v0.0.0-20201221190006-88f012abc67d/go.mod h1:ttKvV90bCJIASAu3m1fmhc9CGbc6JcSAxKF7qQ39Xzo=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=

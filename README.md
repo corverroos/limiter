@@ -15,11 +15,13 @@ type RateLimiter interface {
 }
 ```
 
-The package also provides performance benchmarking; number of operations per number of concurrent goroutines. The following are results of `ratelimit.Benchmark` for different implementations with config aimed at `limit=100, period=10ms` executed on MacBook Pro Quad Core 16GB RAM: 
+The package also provides performance benchmarking; number of operations per number of concurrent goroutines. The following are results of `ratelimit.Benchmark` (in ns/op) for different implementations with config aimed at `limit=100, period=10ms` executed on MacBook Pro Quad Core 16GB RAM: 
 
-|Implementation | 1 | 4 | 16 | 64 | 256 | 1024 | 4096 | 16384 |
+| Implementation | 1 | 4 | 16 | 64 | 256 | 1024 | 4096 | 16384 |
 |---|--|--|--|--|--|--|--|--|
-|github.com/corver/ratelimit.NaiveWindow | 341 | 1_581 | 6_520 | 25_084 | 108_735 | 389_116 | 1_410_022 | 4_813_929 |
-|github.com/corver/ratelimit.SyncMapWindow | 609 | 2_056 | 14_259 | 53_523 | 222_216 | 756_072 | 1_969_951 | 3_686_225 |
+| github.com/corver/ratelimit.SyncMapWindow | 190 | 143 | 135 | 139 | 162 | 136 | 190 | 150 |
+| github.com/corver/ratelimit.NaiveWindow | 223 | 187 | 240 | 235 | 251 | 358 | 361 | 395 |
+| github.com/ellemouton/ratelimiter.TimerWindow | 59 | 63 | 81 | 111 | 116 | 122 | 121 | 121 |
+| github.com/ellemouton/ratelimiter.ChannelWindow | 189 | 192 | 206 | 216 | 287 | 310 | 326 | 340 |
 
 Please DM me link to your implementation for me to add your benchmark score.
